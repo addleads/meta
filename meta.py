@@ -1,5 +1,18 @@
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
+import pyautogui
+import time
+import threading
+
+# Função para simular pressão de teclas
+def simulate_keypress():
+    time.sleep(5)  # Aguarda 5 segundos
+    for _ in range(5):
+        pyautogui.hotkey('ctrl', '+')  # Simula Ctrl + +
+        time.sleep(0.1)  # Pequena pausa entre as pressões
+
+# Inicia a thread para simular a pressão das teclas
+threading.Thread(target=simulate_keypress, daemon=True).start()
 
 # Configuração da página deve ser a primeira chamada
 st.set_page_config(layout='wide')
