@@ -13,16 +13,21 @@ st.markdown(
             left: 0;
             width: 100%;
             height: 100%;
+        }}
+        iframe {{
+            width: 100%;
+            height: 100%;
             border: none;
         }}
     </style>
     <div class="iframe-container">
-        <iframe src="{iframe_url}" width="100%" height="100%" frameborder="0"></iframe>
+        <iframe src="{iframe_url}" id="myIframe"></iframe>
     </div>
+    <script>
+        setInterval(function() {{
+            document.getElementById('myIframe').src = '{iframe_url}';
+        }}, 5000); // Atualiza a cada 5 segundos
+    </script>
     """,
     unsafe_allow_html=True
 )
-
-# Adiciona um auto-refresh a cada 5 segundos
-st.experimental_rerun()
-
