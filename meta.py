@@ -1,6 +1,9 @@
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 
+# Configuração da página deve ser a primeira chamada
+st.set_page_config(layout='wide')
+
 # Configura o auto-refresh a cada 5 segundos (5000 milissegundos)
 st_autorefresh(interval=5 * 1000, key="auto_refresh")
 
