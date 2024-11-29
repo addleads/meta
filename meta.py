@@ -11,7 +11,7 @@ st_autorefresh(interval=5 * 1000, key="auto_refresh")
 iframe_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRz00dW2oP24--Se7nDtOs2NyOkcY-5Pi70JB36UmA885elN5_jGR9tzOeSxW6hD7Q18QRamuyKjm87/pubchart?oid=1606736902&format=interactive"
 
 # Define a escala desejada (80%)
-scale_factor = 0.8
+scale_factor = 2
 
 # Calcula as novas dimensões do iframe
 original_width = 2000  # Largura original em pixels (ajuste conforme necessário)
