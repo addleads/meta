@@ -10,18 +10,17 @@ st_autorefresh(interval=5 * 1000, key="auto_refresh")
 # URL do iframe que você deseja exibir
 iframe_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRz00dW2oP24--Se7nDtOs2NyOkcY-5Pi70JB36UmA885elN5_jGR9tzOeSxW6hD7Q18QRamuyKjm87/pubchart?oid=1606736902&format=interactive"
 
-# Exibe o iframe na aplicação Streamlit com zoom de 80%
+# Define a escala desejada (80%)
+scale_factor = 0.8
+
+# Calcula as novas dimensões do iframe
+original_width = 1000  # Largura original em pixels (ajuste conforme necessário)
+original_height = 600   # Altura original em pixels (ajuste conforme necessário)
+
+scaled_width = int(original_width * scale_factor)
+scaled_height = int(original_height * scale_factor)
+
+# Exibe o iframe na aplicação Streamlit com as novas dimensões
 st.markdown(f'''
-    <style>
-        .iframe-container {{
-            transform: scale(0.8); /* Reduz o tamanho para 80% */
-            transform-origin: top left; /* Define a origem da transformação */
-            width: 125%; /* Ajusta a largura para compensar o zoom */
-            height: 125%; /* Ajusta a altura para compensar o zoom */
-            overflow: hidden; /* Oculta qualquer conteúdo que exceda o contêiner */
-        }}
-    </style>
-    <div class="iframe-container">
-        <iframe src="{iframe_url}" width="100%" height="600" frameborder="0"></iframe>
-    </div>
+    <iframe src="{iframe_url}" width="{scaled_width}" height="{scaled_height}" frameborder="0"></iframe>
 ''', unsafe_allow_html=True)
