@@ -10,5 +10,7 @@ st_autorefresh(interval=5 * 1000, key="auto_refresh")
 # URL do Google Sheets que você deseja exibir
 sheet_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRz00dW2oP24--Se7nDtOs2NyOkcY-5Pi70JB36UmA885elN5_jGR9tzOeSxW6hD7Q18QRamuyKjm87/pubchart?oid=1606736902&format=interactive"
 
-# Exibe o link para o Google Sheets
-st.markdown(f"[Clique aqui para visualizar o gráfico do Google Sheets]({sheet_url})")
+# Exibe o iframe na aplicação Streamlit
+st.markdown(f'''
+    <iframe src="{sheet_url}" width="100%" height="1000" frameborder="0" style="overflow:hidden;"></iframe>
+''', unsafe_allow_html=True)
