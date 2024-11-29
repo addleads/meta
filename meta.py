@@ -1,29 +1,35 @@
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
-import pyautogui
-import time
-import threading
 
-# Função para simular pressão de teclas
+# Attempt to import pyautogui
+try:
+    import pyautogui
+    import time
+    import threading
+except ImportError as e:
+    st.error("PyAutoGUI could not be imported. This functionality may not work in this environment.")
+    pyautogui = None  # Set to None or handle accordingly
+
+# Function to simulate keypresses
 def simulate_keypress():
-    time.sleep(5)  # Aguarda 5 segundos
-    for _ in range(5):
-        pyautogui.hotkey('ctrl', '+')  # Simula Ctrl + +
-        time.sleep(0.1)  # Pequena pausa entre as pressões
+    if pyautogui is not None:
+        time.sleep(5)  # Wait for 5 seconds after loading the page
+        for _ in range(5):
+            pyautogui.hotkey('ctrl', '+')  # Simulate Ctrl + +
+            time.sleep(0.1)  # Short pause between presses
 
-# Inicia a thread para simular a pressão das teclas
-threading.Thread(target=simulate_keypress, daemon=True).start()
+# Start thread for keypress simulation if pyautogui is available
+if pyautogui is not None:
+    threading.Thread(target=simulate_keypress, daemon=True).start()
 
-# Configuração da página deve ser a primeira chamada
+# Streamlit application setup
 st.set_page_config(layout='wide')
-
-# Configura o auto-refresh a cada 5 segundos (5000 milissegundos)
 st_autorefresh(interval=5 * 1000, key="auto_refresh")
 
-# URL do Google Sheets que você deseja exibir
+# URL of Google Sheets to display
 sheet_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRz00dW2oP24--Se7nDtOs2NyOkcY-5Pi70JB36UmA885elN5_jGR9tzOeSxW6hD7Q18QRamuyKjm87/pubchart?oid=1606736902&format=interactive"
 
-# Exibe o iframe na aplicação Streamlit
+# Display iframe in Streamlit app
 st.markdown(f'''
     <iframe src="{sheet_url}" width="100%" height="1000" frameborder="0" style="overflow:hidden;"></iframe>
 ''', unsafe_allow_html=True)
