@@ -14,8 +14,8 @@ iframe_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRz00dW2oP24--Se7n
 scale_factor = 0.8
 
 # Calcula as novas dimensões do iframe
-original_width = 1000  # Largura original em pixels (ajuste conforme necessário)
-original_height = 600   # Altura original em pixels (ajuste conforme necessário)
+original_width = 2000  # Largura original em pixels (ajuste conforme necessário)
+original_height = 1600   # Altura original em pixels (ajuste conforme necessário)
 
 scaled_width = int(original_width * scale_factor)
 scaled_height = int(original_height * scale_factor)
