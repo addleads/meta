@@ -10,13 +10,14 @@ st_autorefresh(interval=5 * 1000, key="auto_refresh")
 # URL do iframe que você deseja exibir
 iframe_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRz00dW2oP24--Se7nDtOs2NyOkcY-5Pi70JB36UmA885elN5_jGR9tzOeSxW6hD7Q18QRamuyKjm87/pubchart?oid=1606736902&format=interactive"
 
-# Define a escala desejada (80%)
-scale_factor = 2
+# Define a escala desejada (por exemplo, 120% para ampliar)
+scale_factor = 1.2
+
+# Define as dimensões originais do iframe
+original_width = 800  # Largura original em pixels
+original_height = 600  # Altura original em pixels
 
 # Calcula as novas dimensões do iframe
-original_width = 2000  # Largura original em pixels (ajuste conforme necessário)
-original_height = 1600   # Altura original em pixels (ajuste conforme necessário)
-
 scaled_width = int(original_width * scale_factor)
 scaled_height = int(original_height * scale_factor)
 
